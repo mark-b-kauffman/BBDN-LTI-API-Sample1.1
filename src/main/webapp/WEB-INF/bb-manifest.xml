@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/* Copyright (C) 2011, Blackboard Inc.
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *  - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  - Neither the name of Blackboard Inc. nor the names of its contributors
+ *     may be used to endorse or promote products derived from this
+ *     software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY BLACKBOARD INC ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL BLACKBOARD INC. BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *	Author: 				Scott Hurrey
+ *	Description:			bb-manifest file for Basic LTI Launcher Building Block
+ *	Date Created:			12/03/2010
+ *	Comments:
+ *	ToDo:
+ */
+-->
+<manifest>
+  <!-- core extension information -->
+  <plugin>
+    <name value= "LTI 1.1 Sample Code"/>
+    <handle value= "lti1.1 Sample"/>
+    <description value= "Sample code demonstrating the LTI 1.1 connection APIs"/>
+    <default-locale value="en_US"/>
+    <version value= "1.0.0"/>
+    <requires>
+    	<bbversion value="9.1.0"/>
+    </requires>
+    <vendor>
+      <id value="bbdn"/>
+      <name value="Blackboard Developers Network"/>
+      <url value="http://www.blackboard.com" />
+      <description value="Blackboard Developers Network" />
+    </vendor>
+    <http-actions>
+      <config value="config.jsp"/>
+      <remove value="admin/remove.jsp"/>
+    </http-actions>
+
+    <!-- Custom content types defined by this extension -->
+    <content-handlers>
+      <content-handler>
+        <name value="IMS Global Content"/>
+        <handle value= "resource/x-bbap-lti1-sample1"/>
+        <http-actions>
+          <create value="contentHandlers/create.jsp?contentType=content"/>
+          <modify value="contentHandlers/modify.jsp?contentType=content"/>
+          <view value="contentHandlers/view.jsp"/>
+        </http-actions>
+        <icons>
+          <toolbar value="images/bbapSmall.gif"/>
+          <listitem value="images/bbapLogo.gif"/>
+        </icons>
+        <types>
+         <type>
+          <action-type value="collaborate"/>
+          <create-text value="create"/>
+         </type>
+        </types>
+      </content-handler>
+      <content-handler>
+        <name value="IMS Global Assessment3"/>
+        <handle value= "resource/x-bbap-lti1-sample3"/>
+        <lti-placement-handle value="lti-test3" />
+        <http-actions>
+          <create value="contentHandlers/create.jsp?contentType=assessment"/>
+          <modify value="contentHandlers/modify.jsp?contentType=assessment"/>
+          <view value="contentHandlers/view.jsp"/>
+        </http-actions>
+        <icons>
+          <toolbar value="images/bbapSmall.gif"/>
+          <listitem value="images/bbapLogo.gif"/>
+        </icons>
+        <types>
+         <type>
+          <action-type value="evaluate"/>
+          <create-text value="create"/>
+         </type>
+        </types>
+      </content-handler>
+    </content-handlers>
+
+    <lti-tool-providers>
+
+    	<provider-domain>
+    		<domain-name value="localhost"/>
+				<placements>
+					<placement>
+						<placement-label-default value="LTI B2"/>
+						<placement-handle value="lti-test3"/>
+						<placement-type value="C"/>
+						<placement-content-type value="createOther"/>
+						<placement-allow-grading value="true"/>
+						<placement-provider-url value="http://localhost:3000/lti"/>
+
+					</placement>
+				</placements>
+    	</provider-domain>
+
+    </lti-tool-providers>
+
+
+    <!-- Tools defined by this extension -->
+    <application-defs>
+      <application handle="lti1.1Sample" type="shared" use-ssl="false" name="LTI 1.1 Sample" can-allow-guest="false"
+        is-course-tool="true" is-group-tool="true" is-org-tool="true" is-sys-tool="true">
+        <description lang="en_US">LTI 1.1 - Blackboard API Sample Code</description>
+        <icons>
+         <small value="images/bbapSmall.gif"/>
+         <tree value="images/bbapSmall.gif"/>
+         <large value="images/bbapLogo.gif"/>
+        </icons>
+        <links>
+          <link>
+            <type value="tool"/>
+            <name value="LTI 1.1 Sample"/>
+            <url value="tools/bltiTool.jsp" />
+            <description value="LTI 1.1 Sample" />
+            <icons>
+              <listitem value="images/bbapLogo.gif"/>
+            </icons>
+          </link>
+          <link>
+            <type value="course_tool"/>
+            <name value="LTI 1.1 Course Tool"/>
+            <url value="tools/bltiCourseTool.jsp" />
+            <description value="LTI 1.1 Course Tool" />
+            <icons>
+              <listitem value="images/bbapLogo.gif"/>
+            </icons>
+          </link>
+          <link>
+            <type value="user_tool"/>
+            <name value="LTI 1.1 User Tool"/>
+            <url value="tools/bltiUserTool.jsp" />
+            <description value="LTI 1.1 User Tool" />
+            <icons>
+              <listitem value="images/bbapLogo.gif"/>
+            </icons>
+          </link>
+          <link>
+            <type value="system_tool"/>
+            <name value="LTI 1.1 System Tool"/>
+            <url value="tools/bltiSystemTool.jsp" />
+            <description value="LTI 1.1 System Tool" />
+            <icons>
+              <listitem value="images/bbapLogo.gif"/>
+            </icons>
+          </link>
+        </links>
+      </application>
+    </application-defs>
+
+        <!-- code permissions required for proper operation -->
+    <permissions>
+      <permission type="persist" name="*" actions="create,modify,delete,persist"/>
+      <permission type="attribute" name="user.*" actions="get,set"/>
+      <permission type="attribute" name="user.authinfo" actions="get,set"/>
+      <permission type="attribute" name="user.personalinfo" actions="get,set" />
+      <permission type="java.io.FilePermission" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" actions="read,write,delete,execute"/>
+      <permission type="persist" name="OutcomeDefinition" actions="create,modify,delete"/>
+      <permission type="persist" name="Content" actions="create,modify,delete"/>
+      <permission type="java.util.PropertyPermission"  name="*" actions="read,write"/>
+      <permission type="javax.management.MBeanPermission" name="*" actions="registerMBean,unregisterMBean"/>
+      <permission type="socket" name="*" actions="listen,connect,resolve" />
+      <permission type="runtime" name="javax.servlet.jsp.jstl"/>
+      <permission type="runtime" name="accessClassInPackage.*"/>
+      <permission type="runtime" name="accessDeclaredMembers"/>
+      <permission type="runtime" name ="preferences"/>
+      <permission type="blackboard.platform.blti.BasicLTIPermission" name="wiscrowd.appspot.com" actions="sendroles,sendemail,sendname"/>
+      <permission type="blackboard.platform.blti.BasicLTIPermission" name="www.imsglobal.org" actions="sendroles,sendemail,sendname"/>
+      <permission type="blackboard.platform.blti.BasicLTIPermission" name="dr-chuck.com" actions="sendroles,sendemail,sendname"/>
+      <permission type="blackboard.platform.blti.BasicLTIPermission" name="localhost" actions="sendroles,sendemail,sendname"/>
+      <permission type="blackboard.platform.blti.BasicLTIPermission" name="107.22.54.217" actions="sendroles,sendemail,sendname"/>
+    </permissions>
+  </plugin>
+
+</manifest>
