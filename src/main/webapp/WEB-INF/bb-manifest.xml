@@ -43,7 +43,7 @@
     <handle value= "lti1.1 Sample"/>
     <description value= "Sample code demonstrating the LTI 1.1 connection APIs"/>
     <default-locale value="en_US"/>
-    <version value= "1.0.0"/>
+    <version value= "1.0.4"/>
     <requires>
     	<bbversion value="9.1.0"/>
     </requires>
@@ -123,7 +123,7 @@
 
     <!-- Tools defined by this extension -->
     <application-defs>
-      <application handle="lti1.1Sample" type="shared" use-ssl="false" name="LTI 1.1 Sample" can-allow-guest="false"
+      <application handle="lti1.1Sample" type="shared" use-ssl="false" name="LTI 1.1 Sample T" can-allow-guest="false"
         is-course-tool="true" is-group-tool="true" is-org-tool="true" is-sys-tool="true">
         <description lang="en_US">LTI 1.1 - Blackboard API Sample Code</description>
         <icons>
@@ -134,18 +134,18 @@
         <links>
           <link>
             <type value="tool"/>
-            <name value="LTI 1.1 Sample"/>
+            <name value="LTI 1.1 Sample Tool Link"/>
             <url value="tools/bltiTool.jsp" />
-            <description value="LTI 1.1 Sample" />
+            <description value="LTI 1.1 Sample Tool Link" />
             <icons>
               <listitem value="images/bbapLogo.gif"/>
             </icons>
           </link>
           <link>
             <type value="course_tool"/>
-            <name value="LTI 1.1 Course Tool"/>
+            <name value="LTI 1.1 Course Tool Link"/>
             <url value="tools/bltiCourseTool.jsp" />
-            <description value="LTI 1.1 Course Tool" />
+            <description value="LTI 1.1 Course Tool Link" />
             <icons>
               <listitem value="images/bbapLogo.gif"/>
             </icons>
